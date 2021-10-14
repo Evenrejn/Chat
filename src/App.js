@@ -1,10 +1,10 @@
 import './App.css';
-import { Message } from './component/message/Message';
+import { MessageContainer } from './component/message/MessageContainer';
 
 function App() {
   return (
     <div className="App">
-      <Message message="some text from props" />
+      <MessageContainer />
     </div>
   );
 }
