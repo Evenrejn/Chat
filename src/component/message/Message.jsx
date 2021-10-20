@@ -4,8 +4,9 @@ export const Message = ({ message }) => {
   const { author, text } = message;
 
   return (
-    <div className={s.messages}>
-      message: {text} author: {author}
+    <div className={author === "User" ? `${s.messages} ${s.myMessage}` : `${s.messages}`}>
+      message: {text} <br/>author: {author}
     </div>
   );
 };
+

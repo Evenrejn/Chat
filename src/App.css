@@ -6,6 +6,8 @@ body {
 
 .App {
   text-align: center;
-  width: 800px;
+  width: 1140px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
 }

@@ -1,6 +1,11 @@
 import s from "./Message.module.css";
 import { Message } from "./Message";
 import { useState, useEffect } from "react";
+import * as React from 'react';
+import { Send } from "@mui/icons-material";
+// import InputUnstyled from '@mui/core/InputUnstyled';
+// import { styled } from '@mui/system';
+import { Input, InputAdornment } from "@mui/material";
 
 export const MessageContainer = () => {
   const [text, setText] = useState("");
@@ -16,6 +21,12 @@ export const MessageContainer = () => {
     }
   };
 
+  const handlePressSend = ({ key }) => {
+    if (key === "Enter" && text) {
+      handleSendMessage();
+    }
+  }
+
   useEffect(() => {
     const lastMessage = messages[messages.length - 1];
     let timerId = null;
@@ -26,27 +37,37 @@ export const MessageContainer = () => {
           ...state,
           { text: "I am bot, hi", author: "bot" },
         ]);
-      }, 500);
+      }, 2000);
     }
 
     return () => clearInterval(timerId);
   }, [messages]);
 
   return (
-    <>
+    <div className={s.wrap}>
       <div>
         {messages.map((message, id) => (
           <Message key={id} message={message} />
         ))}
       </div>
 
-      <input
+      <Input
+        className={s.input}
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Enter your message..."
+        placeholder="Введите сообщение..."
+        fullWidth={true}
+        onKeyPress={handlePressSend}
+        endAdornment={
+          <InputAdornment position="end">
+            {/* {text && ( */}
+              <Send onClick={handleSendMessage} />
+             {/* )} */}
+          </InputAdornment>
+        }
       />
 
-      <button onClick={handleSendMessage}>Send</button>
-    </>
+      {/* <button onClick={handleSendMessage}>Send</button> */}
+    </div>
   );
 };
