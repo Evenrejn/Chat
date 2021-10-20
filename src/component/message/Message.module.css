@@ -1,0 +1,22 @@
+.messages {
+    margin-top: 15px;
+    padding: 20px 30px;
+    background-color: bisque;
+    border: 1px solid burlywood;
+    border-radius: 3px;
+    width: 55%;
+    margin-bottom: 15px;
+}
+
+.wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.myMessage {
+    margin: 0px 37%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
